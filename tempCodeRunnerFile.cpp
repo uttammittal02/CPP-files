@@ -1,2 +1,5 @@
 
-// using namespace __gnu_pbds;
+    w.pb("h");
+    w.pb("bcd");
+    w.pb("def");
+    w.pb("cba");
