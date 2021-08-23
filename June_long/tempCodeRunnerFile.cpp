@@ -1,0 +1,1 @@
+power(a, b/2) * power(a, ceil(b/2))
