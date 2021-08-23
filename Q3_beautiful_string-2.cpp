@@ -35,44 +35,34 @@
 #define FIO ios_base::sync_with_stdio(false); cin.tie(NULL);
 #define loop(var, initial, final) for(int var=initial; var < final; var++)
 using namespace std;
-int gcdcall(int a, int b)
-{
-    // Everything divides 0
-    if (a == 0)
-       return b;
-    if (b == 0)
-       return a;
-  
-    // base case
-    if (a == b)
-        return a;
-  
-    // a is greater
-    if (a > b)
-        return gcdcall(a-b, b);
-    return gcdcall(a, b-a);
-}
+
+int operation(int val){return val*(val+1)/2;}
+
 int32_t main(){
     FIO
     test_cases_loop{
-        int n; cin >> n;
-        vi arr;
-        loop(i, 0, n){
-            int temp; cin >> temp; arr.pb(temp);
-        }
+        string s;
+        cin >> s;
         int ans=0;
-        sort(all(arr), greater<int>());
-        cout << arr[0] << space << arr[1] << endl;
-        loop(i, 0, n){
-            loop(j, i+1, n){
-                int a = arr[i], b = arr[j];
-                if(a%2==0){ans++; continue;}
-                int gcd = gcdcall(a, b);
-                if(gcd>1)ans++;
-            }
+        // need three pointers for one for odd 1s, one for even 1s and one last for '?';
+        // add odd and even counts and always subtrace the '?' count;
+        // cout<<pow(2, 3)<<endl;
+        int odd_one_count=0, even_one_count=0, question_mark_count=0;
+        loop(i, 0, sz(s)){
+            char curr= s[i];
+
+            if(curr == '?'){question_mark_count++; odd_one_count++; even_one_count++; continue;}
+
+            ans -= operation(question_mark_count); question_mark_count=0;
+            
+            int *murder, *elixir;
+            
+            if((i%2) ^ (s[i]=='1')){murder = &odd_one_count, elixir = &even_one_count;} else{murder = &even_one_count, elixir = &odd_one_count;}
+            
+            (*elixir)++; ans+=operation(*murder); *murder=0;
         }
+        ans += operation(even_one_count) + operation(odd_one_count); ans -= operation(question_mark_count);
         cout << ans << endl;
-    }  
-    return 0;
+    }
 }
 

@@ -18,10 +18,11 @@
 #include <random>
 #include <bitset>
 #include <functional>
+#include <numeric>
 #define infinity 999999999999999999
 #define sz(v) ((int)(v).size())
 #define all(v) (v).begin(),(v).end()
-#define MOD_DEFINE const int MOD = 1e9 + 7;
+#define MOD 1000000007
 #define And &&
 #define Or ||
 #define endl '\n'
@@ -35,44 +36,41 @@
 #define FIO ios_base::sync_with_stdio(false); cin.tie(NULL);
 #define loop(var, initial, final) for(int var=initial; var < final; var++)
 using namespace std;
-int gcdcall(int a, int b)
-{
-    // Everything divides 0
-    if (a == 0)
-       return b;
-    if (b == 0)
-       return a;
-  
-    // base case
-    if (a == b)
-        return a;
-  
-    // a is greater
-    if (a > b)
-        return gcdcall(a-b, b);
-    return gcdcall(a, b-a);
+// MOD_DEFINE
+int __gcd(int a, int b){
+    if(b==0) return a;
+    return __gcd(b, a%b);
 }
+// MOD_DEFINE
 int32_t main(){
     FIO
     test_cases_loop{
         int n; cin >> n;
-        vi arr;
+        vi a, b;
+        unordered_map<int, int> atob, btoa;
         loop(i, 0, n){
-            int temp; cin >> temp; arr.pb(temp);
+            int temp; cin >> temp; a.pb(temp);
         }
-        int ans=0;
-        sort(all(arr), greater<int>());
-        cout << arr[0] << space << arr[1] << endl;
         loop(i, 0, n){
-            loop(j, i+1, n){
-                int a = arr[i], b = arr[j];
-                if(a%2==0){ans++; continue;}
-                int gcd = gcdcall(a, b);
-                if(gcd>1)ans++;
+            int temp; cin >> temp; b.pb(temp);
+            atob[a[i]] = temp; btoa[temp]=a[i];
+        }
+        int ans=1;
+        vi visited(n, 0);
+        loop(j, 0, n){
+            if(visited[j])continue;
+            int first = a[j];
+            int second = a[j];
+            bool run=false;
+            while(atob[first]!=second){
+                visited[first]=1;
+                first = atob[first];
+                run=true;
             }
+            visited[first]=1;
+            if(run)ans=(ans << 1)%MOD;
         }
-        cout << ans << endl;
-    }  
+        cout << ans % MOD<< endl;
+    }
     return 0;
 }
-
