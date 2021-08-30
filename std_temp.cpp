@@ -53,7 +53,7 @@ void print(vector<T> &v);
 template<typename T>
 void print(deque<T> &v); 
 template<typename T>
-T _gcd(T a, T b);
+T gcd(T a, T b);
 template<typename T>
 vector<T> sieve(T n);
 template<typename T>
@@ -62,7 +62,7 @@ int nxt();
 // Returns n^(-1) mod p 
 template<typename T>
 T modInverse(T n, T p);
-int gcd(vector<int> &diff);
+// int gcd(vector<int> &diff);
 bool isPowerof2(int x);
 vector<int> divisors(int n){
 	vector<int> ans;
@@ -79,20 +79,61 @@ vector<int> divisors(int n){
 // ----------------------------------------------------------------------------------------------------------- //
 // ----------------------------------------------------------------------------------------------------------- //
 
+class Sparse_table{
+    public:
+        vector<vi> table;
+        void makeuptable(int, vi &, int (*fun)(int, int));
+        int lookuptable(int, int, int (*fun)(int, int));
+};
+void Sparse_table::makeuptable(int n, vi &arr, int (*fun)(int, int)){
+    int cnt(0);
+    while(n > 1){
+        n>>=1; cnt++;
+    }
+    n = sz(arr);
+    // table();
+    
+    table.resize(cnt + 1);
+    loop(i, 0, cnt+1){
+        vi x(n+1);
+        table[i] = x;
+    }
+    loop(i, 0, n){
+        table[0][i+1] = arr[i];
+    }
+    loop(i, 1, cnt+1){
+        loop(j, 1, n+1){
+            table[i][j] = fun(table[i-1][j], table[i-1][j+(1<<(i-1))]);
+        }
+    }
+}
 
+int Sparse_table::lookuptable(int start, int length, int (*fun)(int, int)){
+    int end = start + length - 1;
+    int n = 1; int cnt(-1);
+    while(n <= length){
+        n<<=1; cnt++;
+    }
+    n/=2;
+    // // table();
+    // cout<<cnt<<endl;
+    // cout<<length <<" debug "<<start<<endl;
+    // cout<<table[cnt][start]<<space<<table[cnt][end - n + 1]<<endl;
+    return fun(table[cnt][start], table[cnt][end - n + 1]);
+}
 
 // ----------------------------------------------------------------------------------------------------------- //
 // ----------------------------------------------------------------------------------------------------------- //
 
 int32_t main(){
     FIO
-	#ifndef ONLINE_JUDGE
+	    #ifndef ONLINE_JUDGE
   
     // For getting input from input.txt file
     freopen("input.txt", "r", stdin);
   
     // Printing the Output to output.txt file
-    freopen("output1.txt", "w", stdout);
+    freopen("output.txt", "w", stdout);
     
 	#endif
     return 0;
