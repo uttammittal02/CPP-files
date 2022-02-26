@@ -1,0 +1,1 @@
+{"name":"Local: Mean_to_median","url":"/Users/uttammittal02/Desktop/Cpp_files/Mean_to_median.cpp","tests":[{"id":1641467002099,"input":"1\n4\n2 4 6 100","output":"32"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/uttammittal02/Desktop/Cpp_files/Mean_to_median.cpp","group":"local","local":true}

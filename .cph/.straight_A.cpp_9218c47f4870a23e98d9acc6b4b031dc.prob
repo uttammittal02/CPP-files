@@ -1,0 +1,1 @@
+{"name":"Local: straight_A","url":"/Users/uttammittal02/Desktop/Cpp_files/straight_A.cpp","tests":[{"id":1629993817697,"input":"2 10\n8 9\n","output":"4"},{"id":1629993827386,"input":"3 5\n4 4 4\n","output":"3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/uttammittal02/Desktop/Cpp_files/straight_A.cpp","group":"local","local":true}

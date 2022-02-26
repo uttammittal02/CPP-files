@@ -149,7 +149,7 @@ int32_t main(){
     int l, r;
     cin>>l>>r;
     int ans = b.lookuptable(l, (r-l+1), fun);
-    cout<<ans<<endl;
+    cout << ans << endl;
     return 0;
 }
 

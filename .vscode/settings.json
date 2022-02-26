@@ -1,0 +1,24 @@
+{
+    "C_Cpp.errorSquiggles": "Enabled",
+    "files.associations": {
+        "vector": "cpp",
+        "map": "cpp",
+        "memory": "cpp",
+        "utility": "cpp",
+        "iostream": "cpp",
+        "algorithm": "cpp",
+        "ostream": "cpp",
+        "__config": "cpp",
+        "queue": "cpp",
+        "stack": "cpp",
+        "typeinfo": "cpp",
+        "ios": "cpp",
+        "random": "cpp",
+        "set": "cpp",
+        "iterator": "cpp",
+        "iosfwd": "cpp",
+        "string": "cpp",
+        "__tree": "cpp",
+        "bitset": "cpp"
+    }
+}

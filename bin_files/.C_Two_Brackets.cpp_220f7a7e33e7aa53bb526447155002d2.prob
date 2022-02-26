@@ -1,0 +1,1 @@
+{"name":"Local: C_Two_Brackets","url":"/Users/uttammittal02/Desktop/Cpp_files/C_Two_Brackets.cpp","tests":[{"id":1636348469546,"input":"5\n()\n[]()\n([)]\n)]([\n)[(]\n","output":"1\n2\n2\n0\n1\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/uttammittal02/Desktop/Cpp_files/C_Two_Brackets.cpp","group":"local","local":true}

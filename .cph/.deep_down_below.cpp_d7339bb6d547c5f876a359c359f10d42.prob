@@ -1,0 +1,1 @@
+{"name":"Local: deep_down_below","url":"/Users/uttammittal02/Desktop/Cpp_files/deep_down_below.cpp","tests":[{"id":1631415842490,"input":"2\n1\n1 42\n2\n3 10 15 8\n2 12 11\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/uttammittal02/Desktop/Cpp_files/deep_down_below.cpp","group":"local","local":true}

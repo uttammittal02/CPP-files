@@ -1,0 +1,1 @@
+{"name":"Local: sage_bday","url":"/Users/uttammittal02/Desktop/Cpp_files/sage_bday.cpp","tests":[{"id":1629993006796,"input":"5\n1 2 3 4 5\n","output":"2\n3 1 4 2 5 "}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/uttammittal02/Desktop/Cpp_files/sage_bday.cpp","group":"local","local":true}

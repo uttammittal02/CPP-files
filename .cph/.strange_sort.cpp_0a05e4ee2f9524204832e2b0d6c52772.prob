@@ -1,0 +1,1 @@
+{"name":"Local: strange_sort","url":"/Users/uttammittal02/Desktop/Cpp_files/strange_sort.cpp","tests":[{"id":1630512936161,"input":"3\n3\n3 2 1\n7\n4 5 7 1 3 2 6\n5\n1 2 3 4 5\n","output":"3\n5\n0"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/uttammittal02/Desktop/Cpp_files/strange_sort.cpp","group":"local","local":true}

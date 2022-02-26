@@ -1,0 +1,1 @@
+{"name":"Local: sparse_table","url":"/Users/uttammittal02/Desktop/Cpp_files/sparse_table.cpp","tests":[{"id":1630315722446,"input":"5\n2 4 6 9 12\n2 2","output":"4"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/uttammittal02/Desktop/Cpp_files/sparse_table.cpp","group":"local","local":true}
