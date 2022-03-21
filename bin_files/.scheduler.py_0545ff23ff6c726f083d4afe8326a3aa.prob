@@ -1,0 +1,1 @@
+{"name":"Local: scheduler","url":"/Users/uttammittal02/Desktop/Cpp_files/os_assign/scheduler.py","tests":[{"id":1647420337713,"input":"3\n5\n2 0 3 1 8\n5 8 10 24 3","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/uttammittal02/Desktop/Cpp_files/os_assign/scheduler.py","group":"local","local":true}

@@ -1,145 +1,52 @@
-#include <stack>
-#include <iomanip>
-#include <ios>
-#include <iterator>
-#include <inttypes.h>
-#include <iostream>
-#include <cstdio>
-#include <cstdlib>
-#include <algorithm>
-#include <cmath>
-#include <numeric>
-#include <vector>
-#include <set>
-#include <map>
-#include <unordered_set>
-#include <unordered_map>
-#include <queue>
-#include <ctime>
-#include <cassert>
-#include <complex>
-#include <string>
-#include <cstring>
-#include <chrono>
-#include <random>
-#include <bitset>
-#include <climits>
-#include <functional>
-
-#define YES cout << "YES" << endl;
-#define Yes cout << "Yes" << endl;
-#define NO cout << "NO" << endl;
-#define No cout << "No" << endl;
-#define infinity 999999999999999999
-#define float long double
-#define sz(v) ((int)(v).size())
-#define all(v) (v).begin(), (v).end()
-#define MOD (int)1000000007
-#define endl '\n'
-#define sp ' '
-#define int long long
-#define pii pair<int, int>
-#define vi vector<int>
-#define pb(n) push_back(n)
-#define mii map<int, int>
-#define umii unordered map<int, int>
-#define test_cases_loop \
-	int t;              \
-	cin >> t;           \
-	while (t--)
-#define FIO                           \
-	ios_base::sync_with_stdio(false); \
-	cin.tie(NULL);
-#define find_ele(ele, set) set.find(ele) != set.end()
-#define loop(var, initial, final) for (int var = initial; var < final; var++)
-#define rloop(var, init, end) for (int var = init; var >= end; var--)
-#define ff first
-#define ss second
-#define iter(itr, start, end) for (itr = start; itr != end; itr++)
-#define yesno(var) cout << (var ? "YES" : "NO") << endl;
-#define vpii vector<pii>
-typedef long long ll;
-
+#include <bits/stdc++.h>
 using namespace std;
 
-vector<int> divisors(int n)
-{
-	vector<int> ans;
-	ans.pb(1);
-	for (int i = 2; i <= sqrt(n); i++)
-	{
-		if (n % i == 0)
-		{
-			ans.pb(i);
-			if (n / i != i)
-				ans.pb(n / i);
-		}
-	}
-	ans.pb(n);
-	return ans;
-}
-void precision_print(float n, int p)
-{
-	cout << fixed << setprecision(p) << n << endl;
-	return;
-}
-
-int ceil_(int n, int k)
-{
-	return (n + k - 1) / k;
-}
-//--------------------------------------------------------------------------------------------------------//
-//--------------------------------------------------------------------------------------------------------//
-//--------------------------------------------------------------------------------------------------------//
-//--------------------------------------------------------------------------------------------------------//
-//--------------------------------------------------------------------------------------------------------//
-
-vi arr;
-vi merge(vi &left, vi &right){
-    vi ans;
+vector <int> arr;
+vector <int> merge(vector <int> &left, vector <int> &right){
+    vector <int> ans;
     int i = 0, j = 0;
-    int n = sz(left), m = sz(right);
+    int n = left.size(), m = right.size();
     while(i < n && j < m){
         if(left[i] <= right[j]){
-            ans.pb(left[i]); i++; }
+            ans.push_back(left[i]); i++; 
+        }
         else{
-            ans.pb(right[j]); j++; }
+            ans.push_back(right[j]); j++; 
+        }
     }
     while (i < n){
-        ans.pb(left[i]); i++; }
+        ans.push_back(left[i]); i++; 
+    }
     while (j < m){
-        ans.pb(right[j]); j++; }
+        ans.push_back(right[j]); j++; 
+    }
     return ans;
 }
 
-vi merge_sort(vi &arr, int l, int r){
-    if(l == r) return vi(1, arr[l]);
+vector <int> merge_sort(vector <int> &arr, int l, int r){
+    if(l == r) return vector <int>(1, arr[l]);
     int mid = (l + r) / 2;
-    vi left = merge_sort(arr, l, mid);
-    vi right = merge_sort(arr, mid + 1, r);
-    vi ans = merge(left, right);
+    vector <int> left = merge_sort(arr, l, mid);
+    vector <int> right = merge_sort(arr, mid + 1, r);
+    vector <int> ans = merge(left, right);
     return ans;
 }
 
 int32_t main()
 {
-	FIO
-	int n = 40000;
-    arr = vi(n);
-    std::random_device rd; // obtain a random number from hardware
-    std::mt19937 gen(1); // seed the generator
-    std::uniform_int_distribution<> distr(1, 2*n); // define the range
+	int n; cin >> n;
+    arr = vector <int>(n);
 
-    loop(i, 0, n)
-        arr[i] = distr(gen);
+    for(int i = 0; i < n; i ++)
+        cin >> arr[i];
     cout << "Array before sorting: ";
-    loop(i, 0, n){
-        cout << arr[i] << sp;
+    for(int i = 0; i < n; i ++){
+        cout << arr[i] << ' ';
     }
     arr = merge_sort(arr, 0, n - 1);
     cout << endl << "Array after sorting: ";
-    loop(i, 0, n){
-        cout << arr[i] << sp;
+    for(int i = 0; i < n; i ++){
+        cout << arr[i] << ' ';
     }
     
 

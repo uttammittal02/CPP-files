@@ -19,6 +19,8 @@
         "iosfwd": "cpp",
         "string": "cpp",
         "__tree": "cpp",
-        "bitset": "cpp"
+        "bitset": "cpp",
+        "unordered_map": "cpp",
+        "__functional_base": "cpp"
     }
 }

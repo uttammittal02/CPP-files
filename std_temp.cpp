@@ -49,7 +49,7 @@
 	while (t--)
 #define FIO                           \
 	ios_base::sync_with_stdio(false); \
-	cin.tie(NULL);
+	cin.tie(NULL);cout.tie(NULL);
 #define find_ele(ele, set) set.find(ele) != set.end()
 #define loop(var, initial, final) for (int var = initial; var < final; var++)
 #define rloop(var, init, end) for (int var = init; var >= end; var--)
