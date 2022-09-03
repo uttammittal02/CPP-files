@@ -49,7 +49,7 @@
 	while (t--)
 #define FIO                           \
 	ios_base::sync_with_stdio(false); \
-	cin.tie(NULL);
+	cin.tie(NULL);cout.tie(NULL);
 #define find_ele(ele, set) set.find(ele) != set.end()
 #define loop(var, initial, final) for (int var = initial; var < final; var++)
 #define rloop(var, init, end) for (int var = init; var >= end; var--)
@@ -86,7 +86,7 @@ void precision_print(float n, int p)
 
 int ceil_(int n, int k)
 {
-	return (n + k - 1) / k;
+	return n/k + (bool)(n%k);
 }
 //--------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------//
@@ -94,25 +94,34 @@ int ceil_(int n, int k)
 //--------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------//
 
+int get_bit(int x, int pos){
+	return (x >> pos) & 1ll;
+}
+
+int fun(int r, int i){
+	return (r / (1ll << (i + 1))) * (1ll << i) + max(0ll, r % (1ll << (i + 1)) - (1ll << i) + 1);
+}
+
+void solve()
+{
+	int l, r;
+	cin >> l >> r;
+	int ans = infinity;
+	loop(i, 0, 19){
+		int a = fun(r, i) - fun(l - 1, i);
+		a = (r- l + 1) - a;
+		ans = min(ans, a);
+	}
+	
+	cout << ans << endl;
+}
+
 int32_t main()
 {
 	FIO
 		test_cases_loop
 	{
-		int l, r;
-        cin >> l >> r;
-        int ans = 0;
-        for (int i = 1; i <= r; i *= 2){
-            int cnt = 0;
-            loop(j, l, r + 1){
-                if (i & j){
-                    cnt++;
-                }
-            }
-            ans = max(ans, cnt);
-            // cout << ans << endl;
-        }
-        cout << r - l + 1 - ans << endl;
+		solve();
 	}
 	return 0;
 }

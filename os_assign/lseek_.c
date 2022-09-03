@@ -12,7 +12,7 @@ void func(char arr[], int n)
             // printf(&arr[count]);
         if (count < n) {
             lseek (f_write, n, SEEK_CUR);
-            write (f_read, arr, 1);
+            write (f_read, arr, 1);`
             count = n;
         }
         else {

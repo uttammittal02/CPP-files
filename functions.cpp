@@ -56,7 +56,11 @@ T power(T x, T y, int p) {
     // cout << "res" << res << endl;
     return res; 
 } 
- 
+template<typename T>
+T modInverse(T n, T p){
+    return power(n, p-2, p)%p; 
+} 
+
 template<typename T>
 vector<T> sieve(T n){
 	vector<int> prime(n+1, 1);
@@ -73,18 +77,12 @@ vector<T> sieve(T n){
 	}
 	return prime;
 }
- 
-template<typename T>
-T _gcd(T a, T b){
-	T temp1 = max(a,b), temp2 = min(a,b);
-	a = temp1, b = temp2;
-	if(a == 0) return b;
-	if(b == 0) return a;
-	if(a%b ==0) return b;
-	return _gcd(b, a%b);
-}
 
 template<typename T>
-T modInverse(T n, T p){
-    return power(n, p-2, p)%p; 
-} 
+T _gcd(T a, T b){
+	if (a < b) swap(a, b);
+	if (b)
+		return _gcd(b, a%b);
+	return a;
+}
+

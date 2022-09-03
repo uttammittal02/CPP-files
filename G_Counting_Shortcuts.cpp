@@ -30,16 +30,15 @@
 #define Yes cout << "Yes" << endl;
 #define NO cout << "NO" << endl;
 #define No cout << "No" << endl;
-#define infinity 999999999999999999
+#define infinity 999999999
 #define float long double
 #define sz(v) ((int)(v).size())
 #define all(v) (v).begin(), (v).end()
 #define MOD (int)1000000007
 #define endl '\n'
 #define sp ' '
-#define int long long
+// #define int long long
 #define pii pair<int, int>
-#define vi vector<int>
 #define pb(n) push_back(n)
 #define mii map<int, int>
 #define umii unordered map<int, int>
@@ -59,7 +58,8 @@
 #define yesno(var) cout << (var ? "YES" : "NO") << endl;
 #define vpii vector<pii>
 typedef long long ll;
-
+#define i32 int32_t
+#define vi vector<int>
 using namespace std;
 
 vector<int> divisors(int n)
@@ -95,30 +95,55 @@ int ceil_(int n, int k)
 //--------------------------------------------------------------------------------------------------------//
 
 int paths = 0;
+vi dist_, cnt_path;
+queue <pair <i32, i32> > q;
 
-void bfs(vector <vi > adj, int s, int t){
-    queue <pii > q;
+void bfs(vector <vi > adj, i32 s, i32 t){
+	dist_[s] = 0;
+	q = queue <pair <i32, i32> > ();
     q.push(make_pair(s, s));
     int dist = 0, cnt = 1, p = infinity;
+	mii freq;
+	cnt_path[s] = 1;
     while(!q.empty()){
         if (dist > p + 1)
             return;
         int u = q.front().ff;
         int par = q.front().ss;
         cnt --;
+		freq[u] += cnt_path[par];
+		cout << u << sp << par << sp << cnt_path[par] << endl;
         q.pop();
-        loop(i, 0, adj[u].size()){
-            int v = adj[u][i];
-            if (v == t){
-                paths ++;
-                paths %= MOD;
-                p = min(p, dist);
-            }
-            if (v != par && v != t and dist <= p){
-                q.push(make_pair(v, u));
-            }
-        }
         if (!cnt){
+			mii :: iterator itr;
+			iter(itr, freq.begin(), freq.end()){
+				int u = itr->ff, num = itr->ss;
+				cout <<"map " << u << sp << num << sp << dist << endl;
+				// cnt_path[u] += num;
+				// cnt_path[u] %= MOD;
+				loop(i, 0, adj[u].size()){
+					int v = adj[u][i];
+					if (v == t){
+						// cout << u << sp << dist << sp << num << endl;
+						paths += num;
+						cnt_path[v] += num;
+						cnt_path[v] %= MOD;
+						paths %= MOD;
+						p = min(p, dist);
+					}
+					if (v != t and dist <= p){
+						if (dist > dist_[v])
+							continue;
+						dist_[v] = min(dist_[v], dist + 1);
+						cnt_path[v] += num;
+						cnt_path[v] %= MOD;
+						q.push(make_pair(v, u));
+					}
+					cout << v << sp << cnt_path[v] << endl;
+				}
+			}
+			// cout << endl;
+			freq = mii();
             dist++;
             cnt = q.size();
         }
@@ -128,8 +153,9 @@ void bfs(vector <vi > adj, int s, int t){
 void solve()
 {
     paths = 0;
-	int n, m, s, t;
+	i32 n, m, s, t;
 	cin >> n >> m >> s >> t;
+	dist_ = vi(n + 1, infinity), cnt_path = vi(n + 1, 0);
 	vector <vi > adj(n + 1);
 	loop(i, 0, m)
 	{
@@ -139,7 +165,10 @@ void solve()
         adj[v].pb(u);
 	}
     bfs(adj, s, t);
-    cout << (paths % MOD) << endl;
+    cout << (cnt_path[t] % MOD) << endl;
+	// loop(i, 1, n + 1){
+	// 	cout << cnt_path[i] << endl;
+	// }
 }
 
 int32_t main()

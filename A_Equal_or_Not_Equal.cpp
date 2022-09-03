@@ -24,6 +24,7 @@
 #include <random>
 #include <bitset>
 #include <climits>
+#include <tuple>
 #include <functional>
 
 #define YES cout << "YES" << endl;
@@ -49,7 +50,7 @@
 	while (t--)
 #define FIO                           \
 	ios_base::sync_with_stdio(false); \
-	cin.tie(NULL);
+	cin.tie(NULL);cout.tie(NULL);
 #define find_ele(ele, set) set.find(ele) != set.end()
 #define loop(var, initial, final) for (int var = initial; var < final; var++)
 #define rloop(var, init, end) for (int var = init; var >= end; var--)
@@ -86,7 +87,7 @@ void precision_print(float n, int p)
 
 int ceil_(int n, int k)
 {
-	return (n + k - 1) / k;
+	return n/k + (bool)(n%k);
 }
 //--------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------//
@@ -94,23 +95,27 @@ int ceil_(int n, int k)
 //--------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------//
 
+void solve()
+{
+	// int n;
+	// cin >> n;
+	// int k; cin >> k;
+	string s; cin >> s;
+	int c = count(all(s), 'N');
+	yesno(c != 1);
+	// vi arr(n);
+	// loop(i, 0, n)
+	// {
+	// 	cin >> arr[i];
+	// }
+}
+
 int32_t main()
 {
 	FIO
 		test_cases_loop
 	{
-		// int n;
-		// cin >> n;
-		string s; cin >> s;
-        int cnt = 0;
-        loop(i, 0, sz(s))
-        {
-            if(s[i] == 'N')
-                cnt++;
-            
-        }
-        // cout << cnt << endl;
-        yesno((bool)(cnt != 1));
+		solve();
 	}
 	return 0;
 }
@@ -121,3 +126,6 @@ int32_t main()
 //--------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------//
 //--------------------------------------------------------------------------------------------------------//
+// 1 3 9
+// 2 6 10
+// 5 7 11

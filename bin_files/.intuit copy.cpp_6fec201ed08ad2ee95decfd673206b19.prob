@@ -1,0 +1,1 @@
+{"name":"Local: intuit copy","url":"/Users/uttammittal02/Desktop/Cpp_files/intuit copy.cpp","tests":[{"id":1659799569924,"input":"7\nH D H S A H S\nH","output":"3"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/uttammittal02/Desktop/Cpp_files/intuit copy.cpp","group":"local","local":true}
