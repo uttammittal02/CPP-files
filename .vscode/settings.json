@@ -33,6 +33,7 @@
         "sstream": "cpp",
         "tuple": "cpp",
         "unordered_set": "cpp",
-        "variant": "cpp"
+        "variant": "cpp",
+        "numeric": "cpp"
     }
 }

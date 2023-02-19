@@ -26,19 +26,11 @@
 #include <climits>
 #include <functional>
 
-template<typename T>
-T _gcd(T a, T b);
-template<typename T>
-vector<T> sieve(T n);
-template<typename T>
-T power(T x, T y, int p = LLONG_MAX);
-// Returns n^(-1) mod p 
-template<typename T>
-T modInverse(T n, T p);
+#define pb(n) push_back(n)
+using namespace std;
 
-template<typename T>
-T power(T x, T y, int p) { 
-    T res = 1;      // Initialize result 
+int power(int x, int y, int p) { 
+    int res = 1;      // Initialize result 
   
     x = x % p;  // Update x if it is more than or 
                 // equal to p 
@@ -56,13 +48,12 @@ T power(T x, T y, int p) {
     // cout << "res" << res << endl;
     return res; 
 } 
-template<typename T>
-T modInverse(T n, T p){
+
+int modInverse(int n, int p){
     return power(n, p-2, p)%p; 
 } 
 
-template<typename T>
-vector<T> sieve(T n){
+vector<int> sieve(int n){
 	vector<int> prime(n+1, 1);
 	for(int i = 2; i*i<=n; i++){
 		if(prime[i]){
@@ -71,15 +62,14 @@ vector<T> sieve(T n){
 			}
 		}
 	}
-	vector<T> ans;
+	vector<int> ans;
 	for(int i = 2; i<=n;i++){
 		if(prime[i]) ans.pb(i);
 	}
-	return prime;
+	return ans;
 }
 
-template<typename T>
-T _gcd(T a, T b){
+int _gcd(int a, int b){
 	if (a < b) swap(a, b);
 	if (b)
 		return _gcd(b, a%b);
